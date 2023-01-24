@@ -4,16 +4,15 @@ const os = require("os");
 const bot = new TeleBot(TELEGRAM_BOT_TOKEN);
 const chatIds = [];
 const CronJob = require("cron").CronJob;
-const job = new CronJob("0/5 * * * * *", function () {
+const job = new CronJob("* * * * * *", function () {
   // console.log("You will see this message every second");
-  // chatIds.forEach((chatId) => {
-  //   bot.sendMessage(chatId, "You are hacked");
-  //   bot.sendPhoto(chatId, 'https://img.freepik.com/premium-vector/smile-face-with-middle-finger-gesture-t-shirt-print-vector-hand-drawn-cartoon-character-illustration-smile-face-middle-finger-gesture-print-t-shirt-poster-concept_92289-3299.jpg?w=2000')
-  // })
+  chatIds.forEach((chatId) => {
+    bot.sendMessage(chatId, "🤣");
+    // bot.sendPhoto(chatId, 'https://www.section.io/engineering-education/authors/ck-muithi/avatar_hu25b829c8f03ccf3982871de8ac4ed264_105111_180x0_resize_q75_box.jpg')
+  })
 },null,true);
 
 
-bot.on("text", (msg) => msg.reply.text(`Name: ${msg.from.first_name}\nQurilma nomi: ${os.type()}`));
 
 bot.on(["/start"], (msg) => {
   let chatId = msg.chat.id;
